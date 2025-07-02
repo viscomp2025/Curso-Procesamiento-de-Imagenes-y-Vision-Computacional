@@ -46,7 +46,7 @@ Capacitar a los participantes en el uso de herramientas y técnicas para resolve
 
 ---
 
-## ⚙️ Tecnologías y Herramientas
+## Tecnologías y Herramientas
 
 - Computadoras con alta capacidad de procesamiento: Cada participante debe contar con una computadora con un procesador de al menos 4 núcleos, 8 GB de RAM o más, y espacio en disco suficiente para manejar datasets y software de procesamiento de imágenes (mínimo 50 GB libres).
 - Acceso a Internet de alta velocidad: Conexión estable de al menos 20 Mbps.
@@ -63,7 +63,7 @@ Capacitar a los participantes en el uso de herramientas y técnicas para resolve
 
 ---
 
-## 📬 Contacto
+## Contacto
 
 Para dudas o soporte académico, contactar al facilitador asignado mediante la plataforma Moodle.
 
