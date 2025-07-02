@@ -48,13 +48,18 @@ Capacitar a los participantes en el uso de herramientas y técnicas para resolve
 
 ## ⚙️ Tecnologías y Herramientas
 
-Python 3.11.13
-TensorFlow: 2.18.0
-NumPy: 2.0.2
-Matplotlib: 3.10.0
-Scikit-learn: 1.6.1
-Ultralytics: 8.3.159
-Opencv-python: 4.11.0.86
+- Computadoras con alta capacidad de procesamiento: Cada participante debe contar con una computadora con un procesador de al menos 4 núcleos, 8 GB de RAM o más, y espacio en disco suficiente para manejar datasets y software de procesamiento de imágenes (mínimo 50 GB libres).
+- Acceso a Internet de alta velocidad: Conexión estable de al menos 20 Mbps.
+- Software requerido: 
+   - Python 3.11.13
+   - TensorFlow: 2.18.0
+   - NumPy: 2.0.2
+   - Matplotlib: 3.10.0
+   - Scikit-learn: 1.6.1
+   - Ultralytics: 8.3.159
+   - Opencv-python: 4.11.0.86
+- Entornos de desarrollo: Google Colab
+
 
 ---
 
