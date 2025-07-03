@@ -1,0 +1,12 @@
+Instalación de Python y bibliotecas:
+Instala Python 3.12 desde python.org.
+Instala las bibliotecas necesarias ejecutando en la terminal:
+pip install opencv-python==4.10.0.84 numpy==2.1.2 matplotlib==3.9.2
+Entorno de desarrollo:
+Usa VS Code con la extensión Python o Jupyter Notebook (instala con pip install jupyterlab==4.2.5).
+Descarga de imágenes:
+Obtén imágenes de prueba desde el repositorio del curso en GitHub (enlace en Moodle):
+monedas.jpg (Actividad Práctica).
+luz_uniforme.jpg, sombra_parcial.jpg, tornillos.jpg (Actividad Intermedia).
+Una imagen propia (Actividad Final, por ejemplo, objetos.jpg).
+Usa formatos JPG o PNG.
