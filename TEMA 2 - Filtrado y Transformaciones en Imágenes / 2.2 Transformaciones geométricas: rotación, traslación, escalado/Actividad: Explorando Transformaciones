@@ -1,1 +1,68 @@
+"""
+Objetivo:
+ Aplicar transformaciones geométricas simples (rotación, traslación y escalado) a una imagen del dataset, para observar cómo cambian la posición, orientación y tamaño del contenido.
+Material:
+Imagen del dataset: Smartphone Image Denoising Dataset
+Dataset
+Smartphone Image Denoising Dataset (SIDD): contiene 160 pares de imágenes ruidosas y sus equivalentes limpias tomadas con distintos celulares bajo diferentes condiciones de iluminación 
+Descarga desde el enlace:
+https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset?utm_source=chatgpt.com
+Lenguaje: Python + OpenCV (opcional)
+Imagen sugerida: 0001_01_01_NOISY_SRGB.PNG
+Instrucciones:
+Carga una imagen ruidosa del dataset.
+Aplica estas tres transformaciones (elige solo una versión sencilla de cada una):
+Rotación de 30 grados.
+Traslación 50 píxeles a la derecha.
+Escalado 0.7× (reducción).
+Muestra la imagen original y transformada.
+Guarda las versiones transformadas para comparar.
+"""
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 
+# Ruta local a la imagen del dataset (ajusta según donde la descargues)
+image_path = "ruta/a/tu/imagen/0001_01_01_NOISY_SRGB.PNG"
+original = cv2.imread(image_path)
+
+# Asegura que la imagen fue cargada correctamente
+if original is None:
+    raise FileNotFoundError("No se pudo cargar la imagen. Verifica la ruta.")
+
+# 1. Rotación 30°
+(h, w) = original.shape[:2]
+center = (w // 2, h // 2)
+M_rot = cv2.getRotationMatrix2D(center, 30, 1.0)
+rotated = cv2.warpAffine(original, M_rot, (w, h))
+
+# 2. Traslación 50px a la derecha
+M_trans = np.float32([[1, 0, 50], [0, 1, 0]])
+translated = cv2.warpAffine(original, M_trans, (w, h))
+
+# 3. Escalado 0.7x
+scaled = cv2.resize(original, None, fx=0.7, fy=0.7, interpolation=cv2.INTER_LINEAR)
+canvas = np.zeros_like(original)
+start_y = (canvas.shape[0] - scaled.shape[0]) // 2
+start_x = (canvas.shape[1] - scaled.shape[1]) // 2
+canvas[start_y:start_y + scaled.shape[0], start_x:start_x + scaled.shape[1]] = scaled
+scaled = canvas
+
+# Guardar las imágenes transformadas
+cv2.imwrite("original.png", original)
+cv2.imwrite("rotated_30.png", rotated)
+cv2.imwrite("translated_50px.png", translated)
+cv2.imwrite("scaled_0.7x.png", scaled)
+
+# Mostrar resultados
+fig, axes = plt.subplots(1, 4, figsize=(16, 4))
+titles = ['Original', 'Rotación 30°', 'Traslación 50px', 'Escalado 0.7×']
+images = [original, rotated, translated, scaled]
+
+for ax, im, title in zip(axes, images, titles):
+    ax.imshow(cv2.cvtColor(im, cv2.COLOR_BGR2RGB))
+    ax.set_title(title)
+    ax.axis('off')
+
+plt.tight_layout()
+plt.show()
