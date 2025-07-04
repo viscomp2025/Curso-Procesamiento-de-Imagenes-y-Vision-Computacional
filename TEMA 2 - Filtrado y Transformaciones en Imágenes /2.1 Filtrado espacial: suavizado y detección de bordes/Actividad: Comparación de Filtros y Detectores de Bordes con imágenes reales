@@ -1,1 +1,47 @@
+"""
+Dataset
+Smartphone Image Denoising Dataset (SIDD): contiene 160 pares de imágenes ruidosas y sus equivalentes limpias tomadas con distintos 
+celulares bajo diferentes condiciones de iluminación 
+Descarga desde el enlace:
+https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset?utm_source
+Actividad: Aplicar, comparar y analizar el rendimiento visual de distintos filtros espaciales de suavizado (promedio, gaussiano, mediana)
+y técnicas de detección de bordes (Sobel, Laplaciano, Canny)
+sobre imágenes reales con ruido del dataset SIDD, para evaluar su efectividad en limpieza y realce de contornos.
+"""
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 
+# Cargar imagen ruidosa (versión sRGB del dataset)
+img = cv2.imread("0001_01_01_NOISY_SRGB.PNG")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# --- FILTRADO (SUAVIZADO) ---
+blur = cv2.blur(gray, (5,5))             # Promedio
+gaussian = cv2.GaussianBlur(gray, (5,5), 0)
+median = cv2.medianBlur(gray, 5)
+# --- DETECCIÓN DE BORDES ---
+sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0)
+sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1)
+sobel = cv2.magnitude(sobelx, sobely)
+
+laplacian = cv2.Laplacian(gray, cv2.CV_64F)
+canny = cv2.Canny(gray, 100, 200)
+
+# --- VISUALIZACIÓN ---
+titles = [
+ "Original", "Promedio", "Gaussiano", "Mediana",
+ "Sobel", "Laplaciano", "Canny"
+]
+images = [
+ gray, blur, gaussian, median,
+ sobel, laplacian, canny]
+plt.figure(figsize=(12, 8))
+for i in range(7):
+ plt.subplot(2, 4, i + 1)
+ plt.imshow(images[i], cmap='gray')
+ plt.title(titles[i])
+ plt.axis('off')
+
+plt.tight_layout()
+plt.show()
