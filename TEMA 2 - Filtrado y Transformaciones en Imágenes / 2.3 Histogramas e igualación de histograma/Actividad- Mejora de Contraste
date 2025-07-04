@@ -1,3 +1,14 @@
+"""
+Objetivo:
+ Aplicar ecualización de histograma a una imagen ruidosa y visualizar el cambio de contraste.
+Instrucciones:
+Carga una imagen del dataset en escala de grises.
+Aplica ecualización de histograma.
+Compara visualmente antes y después.
+Imagen sugerida:
+0001_01_01_NOISY_SRGB.PNG del dataset:
+https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset
+"""
 import cv2
 import matplotlib.pyplot as plt
 
